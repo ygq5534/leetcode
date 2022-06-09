@@ -1,0 +1,15 @@
+#include <iostream>
+#include <string>
+//#include <map>
+#include <vector>
+
+using namespace std;
+
+string & judgeStrDict(string &s, )
+
+int main(){
+	string s = "abpcplea";
+	vector v = ["ale","apple","monkey","plea"];
+	cout<<v[1]<<endl;
+	return 0;
+}
