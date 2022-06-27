@@ -18,38 +18,56 @@ using namespace std;
  * Output: true
  * */
 
+//bool solution(vector<vector<int>> matrix, int target){
+//	int m = matrix.size(), n = matrix[0].size();
+//	for(int i = 0; i < m; i++){
+//		for(int j = 0; j < n; j++){
+//			cout<<matrix[i][j]<<endl;
+//			if(matrix[i][j] == target){
+//				return true;
+//			}else if(matrix[i][j] > target){
+//				for(int ii = i; i < m; ii++){
+//					cout<<matrix[ii][j-1]<<endl;
+//					if(matrix[ii][j-1] == target){
+//						return true;
+//					}else if(matrix[ii][j-1] > target){
+//						for(int jj = j; j>=0; j++){
+//						        cout<<matrix[ii-1][jj]<<endl;
+//							if(matrix[ii-1][jj] == target){
+//								return true;
+//							}else{
+//								return false;
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
+//	}
+//	return false;
+//}
+
 bool solution(vector<vector<int>> matrix, int target){
-	int m = matrix.size(), n = matrix[0].size();
-	for(int i = 0; i < m; i++){
-		for(int j = 0; j < n; j++){
-			cout<<matrix[i][j]<<endl;
-			if(matrix[i][j] == target){
-				return true;
-			}else if(matrix[i][j] > target){
-				for(int ii = i; i < m; ii++){
-					cout<<matrix[ii][j-1]<<endl;
-					if(matrix[ii][j-1] == target){
-						return true;
-					}else if(matrix[ii][j-1] > target){
-						for(int jj = j; j>=0; j++){
-						        cout<<matrix[ii-1][jj]<<endl;
-							if(matrix[ii-1][jj] == target){
-								return true;
-							}else{
-								return false;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	return false;
+        int m = matrix.size(), n = matrix[0].size();
+        int i = 0, j = 0;
+        while (i < m && j < m){
+                if (matrix[i][j] > target){
+                        j--;
+                        i++;
+                }else if(j == n-1){
+                        i++;
+                }else if(matrix[i][j] == target){
+                        return true;
+                }else{
+                        j++;
+                }
+        }
+        return false;
 }
 
 int main(){
 	vector<vector<int>> matrix = {{1, 4, 7, 11, 15},{2, 5, 8, 12, 19},{3, 6, 9, 16, 22},{10, 13, 14, 17, 24},{18, 21, 23, 26, 30}};
-	bool res = solution(matrix, 17);
+	bool res = solution(matrix, 20);
 	cout<<res<<endl;
 	return 0;
 }
